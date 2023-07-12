@@ -4,13 +4,29 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 
-ctx.lineWidth = 2;
-ctx.moveTo(0, 0);
+ctx.lineWidth = 10;
+let isPainting = false;
 
-function onClick(event) {
-  console.log(event);
-  ctx.lineTo(event.offsetX, event.offsetY);
-  ctx.stroke();
+function onMove(event) {
+  if (isPainting) {
+    ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.stroke();
+    return;
+  }
+  ctx.moveTo(event.offsetX, event.offsetY);
 }
 
-canvas.addEventListener("click", onClick);
+function startPainting() {
+  isPainting = true;
+}
+
+function cancelPainting() {
+  isPainting = false;
+}
+
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", cancelPainting);
+canvas.addEventListener("mouseleave", cancelPainting)
+
+
