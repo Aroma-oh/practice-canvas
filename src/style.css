@@ -1,0 +1,22 @@
+body {
+  background-color: rgb(255, 234, 230);
+}
+
+canvas {
+  border: 1px solid black;
+  width: 800px;
+  height: 800px;
+}
+
+#color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.color-option {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
