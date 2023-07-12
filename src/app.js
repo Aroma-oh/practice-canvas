@@ -3,6 +3,8 @@ const lineWidth = document.getElementById("line-width");
 const color = document.getElementById("color");
 const eraser = document.getElementById("eraser");
 const brush = document.getElementById("brush");
+const save = document.getElementById("save");
+
 const colorOption = Array.from(document.getElementsByClassName("color-option"));
 const ctx = canvas.getContext("2d");
 
@@ -66,6 +68,18 @@ function onBrush() {
   mode = "brush";
 };
 
+function onSave() {
+  canvas.toBlob((blob) => {
+
+    const a = document.createElement('a');
+    document.body.append(a);
+    a.download = 'export{timestamp}.png';
+    a.href = URL.createObjectURL(blob);
+    a.click();
+    a.remove();
+  });
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", stopPainting);
@@ -77,5 +91,6 @@ colorOption.forEach(color => color.addEventListener("click", clickChangeColor));
 
 eraser.addEventListener("click", onEraser);
 brush.addEventListener("click", onBrush);
+save.addEventListener("click", onSave);
 
 
