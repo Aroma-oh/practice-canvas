@@ -13,7 +13,6 @@ canvas.height = 800;
 
 ctx.lineWidth = lineWidth.value;
 
-const MODE_BUTTON = ["brush", "erase"];
 let mode = "brush";
 let isPainting = false;
 
