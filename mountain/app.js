@@ -1,4 +1,5 @@
-import { Hill } from './hill.js'
+import { Hill } from './hill.js';
+import { IconController } from './iconController.js';
 
 class App {
   constructor() {
@@ -7,10 +8,14 @@ class App {
     document.body.appendChild(this.canvas);
 
     this.hills = [
-      new Hill('#fd6bea', 0.2, 12),
-      new Hill('#ff59c2', 0.5, 8),
-      new Hill('#ff4674', 1.2, 6),
+      new Hill('#DFFFD8', 0.2, 12),
+      new Hill('#B5F1CC', 0.5, 8),
+      new Hill('#95DAC1', 1.2, 6),
     ];
+    //65C18C
+    //95DAC1
+
+    this.IconController = new IconController();
 
     window.addEventListener('resize', this.resize.bind(this), false);
     this.resize();
@@ -29,6 +34,8 @@ class App {
     for (let i = 0; i < this.hills.length; i++) {
       this.hills[i].resize(this.stageWidth, this.stageHeight);
     }
+
+    this.IconController.resize(this.stageWidth, this.stageHeight);
   }
 
   animate(t) {
@@ -40,6 +47,8 @@ class App {
     for (let i = 0; i < this.hills.length; i++) {
       dots = this.hills[i].draw(this.ctx);
     }
+
+    this.IconController.draw(this.ctx, t, dots);
   }
 }
 
