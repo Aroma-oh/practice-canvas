@@ -52,7 +52,7 @@ export class Hill {
 
       prev = cur;
       prevCx = cx;
-      prevXy = cy;
+      prevCy = cy;
     }
 
     ctx.lineTo(prev.x, prev.y);
