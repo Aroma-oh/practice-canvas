@@ -9,7 +9,7 @@ class App {
     this.hills = [
       new Hill('#fd6bea', 0.2, 12),
       new Hill('#ff59c2', 0.5, 8),
-      new Hill('#ff4674', 1.4, 6),
+      new Hill('#ff4674', 1.2, 6),
     ];
 
     window.addEventListener('resize', this.resize.bind(this), false);
